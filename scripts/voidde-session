@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# VoidDE session entry point — called by display manager
+export XDG_CURRENT_DESKTOP=VoidDE
+export XDG_SESSION_DESKTOP=voidde
+export GTK_THEME=MacTahoe-Dark
+export GTK_ICON_THEME=MacTahoe
+export XCURSOR_THEME=MacTahoe-cursors
+export XCURSOR_SIZE=24
+export QT_QPA_PLATFORMTHEME=gtk3
+export QT_STYLE_OVERRIDE=gtk3
+
+# dbus session
+eval $(dbus-launch --sh-syntax --exit-with-session)
+
+# Start picom compositor
+picom --config "$HOME/.config/voidde/picom.conf" --daemon 2>/dev/null
+
+# Start window manager (background)
+python3 /usr/share/voidde/core/wm.py &
+WM_PID=$!
+
+# Start session manager (launches panel, dock, notifications, autostart)
+python3 /usr/share/voidde/core/session.py
+
+wait $WM_PID

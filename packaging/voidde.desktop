@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=VoidDE
+Comment=VoidDE — macOS-style Linux Desktop Environment
+Exec=voidde-session
+Type=XSession
+DesktopNames=VoidDE
