@@ -27,7 +27,7 @@
 ## Install
 
 ```bash
-git clone https://github.com/yourusername/voidde
+git clone https://github.com/ts-omayer/Void-DE.git
 cd voidde
 bash install.sh          # dark mode (default)
 bash install.sh --light  # light mode
